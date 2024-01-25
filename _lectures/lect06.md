@@ -102,7 +102,21 @@ rarebird = Animal("phoenix", "Zarra")
 print(rarebird.info())
 print(rarebird.getSound()) # I’m an Animal!!!
 ```
+We can also modify/override methods from the parent class while still using pieces of its functionality
+```
+# Cow.py
 
+from Animal import Animal
+
+class Cow(Animal):
+    def __init__(self, species=None, name=None, sound=None):
+	super().__init__(species, name) 
+	self.sound = sound 
+	# Animal.__init__(self, species, name) is an alternate method seen in the textbook
+```
+* The `Cow` constructor uses the `Animal` constructor to set the `species` and `name` attributes with the `super()` method
+* The `sound` attribute, which is unique to the `Cow` class, is set as you normally would
+  
 <b>Note:</b> The constructed object type will dictate which method in which class is called.
 * It first looks at the <b>constructed object type</b> and checks if there is a method defined in that class. If so, it uses that method
 * If the constructed object doesn’t have a method definition in its class, then it checks the immediate parent(s) it inherited from, and so on ...
